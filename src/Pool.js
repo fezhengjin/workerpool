@@ -1,3 +1,4 @@
+var FastList = require('fast-list');
 var Promise = require('./Promise');
 var WorkerHandler = require('./WorkerHandler');
 var environment = require('./environment');
@@ -19,7 +20,7 @@ function Pool(script, options) {
   }
 
   this.workers = [];  // queue with all workers
-  this.tasks = [];    // queue with tasks awaiting execution
+  this.tasks = new FastList();    // queue with tasks awaiting execution
 
   options = options || {};
 
